@@ -11,19 +11,26 @@ int main(int argc, char *argv[])
   {
     /* 父进程 */
     int wstatus;
-    int i = 5;
-    while (i--)
+    int count = 0;
+    while (1)
     {
       sleep(1);
       printf("parent message: child pid:%d\n", pid);
+      count++;
+      int ret = waitpid(pid, &wstatus, WNOHANG);
+      if (ret == pid)
+      {
+        printf("child exit status is : %d  while count is %d \n", WEXITSTATUS(wstatus), count);
+        return 0;
+      }
     }
-    int ret = wait(&wstatus);
-    if (ret == -1)
-    {
-      perror("wait ");
-      return -1;
-    }
-    printf("child exit status is : %d\n", WEXITSTATUS(wstatus));
+    // int ret = wait(&wstatus);
+    // if (ret == -1)
+    // {
+    //   perror("wait ");
+    //   return -1;
+    // }
+    // printf("child exit status is : %d\n", WEXITSTATUS(wstatus));
   }
   else if (pid == 0)
   {

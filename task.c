@@ -5,10 +5,7 @@
 #include <sys/wait.h>
 int main()
 {
-  int i;
-  for (i = 0; i < 7; ++i)
-  {
-    sleep(1);
-  }
-  exit(i);
+  sleep(5);
+
+  exit(1);
 }
