@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
   {
     /* 父进程 */
     int wstatus;
-    int i = 1;
+    int i = 5;
     while (i--)
     {
       sleep(1);
@@ -28,7 +28,13 @@ int main(int argc, char *argv[])
   else if (pid == 0)
   {
     /* 子进程 */
+    int ret = execl("/home/likun/workspace/linux_set/fork/hmwork/build/task", "task", NULL);
+    if (ret < 0)
+    {
+      perror("exec");
+      return -1;
     }
+  }
   else
   {
     perror("fork error");
