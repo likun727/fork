@@ -35,12 +35,17 @@ int main(int argc, char *argv[])
   else if (pid == 0)
   {
     /* 子进程 */
-    int ret = execl("/home/likun/workspace/linux_set/fork/hmwork/build/task", "task", NULL);
+    int ret = execl("/home/likun/workspace/linux_set/fork/hmwork/build/task", "t", NULL);
     if (ret < 0)
     {
       perror("exec");
       return -1;
     }
+    printf("sdadas");
+    printf("sdadas");
+    printf("sdadas");
+    printf("sdadas");
+    printf("sdadas");
   }
   else
   {
